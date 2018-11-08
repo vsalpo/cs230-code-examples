@@ -2,7 +2,7 @@
 
 import tensorflow as tf
 
-
+# VS - Shoudlnt need if we are starting with JSON images
 def _parse_function(filename, label, size):
     """Obtain the image from the filename (for both training and validation).
 
@@ -22,7 +22,7 @@ def _parse_function(filename, label, size):
 
     return resized_image, label
 
-
+# VS - probably don't want to change images with these
 def train_preprocess(image, label, use_random_flip):
     """Image preprocessing for training.
 
@@ -41,7 +41,7 @@ def train_preprocess(image, label, use_random_flip):
 
     return image, label
 
-
+# VS - change this for out input frames and labels
 def input_fn(is_training, filenames, labels, params):
     """Input function for the SIGNS dataset.
 
