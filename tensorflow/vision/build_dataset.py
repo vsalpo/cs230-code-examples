@@ -46,8 +46,8 @@ if __name__ == '__main__':
     assert os.path.isdir(args.data_dir), "Couldn't find the dataset at {}".format(args.data_dir)
 
     # Define the data directories
-    train_data_dir = os.path.join(args.data_dir, 'train_signs')
-    test_data_dir = os.path.join(args.data_dir, 'test_signs')
+    train_data_dir = os.path.join(args.data_dir, 'train_frames')
+    test_data_dir = os.path.join(args.data_dir, 'test_frames')
 
     # Get the filenames in each directory (train and test)
     filenames = os.listdir(train_data_dir)
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
     # Preprocess train, dev and test
     for split in ['train', 'dev', 'test']:
-        output_dir_split = os.path.join(args.output_dir, '{}_signs'.format(split))
+        output_dir_split = os.path.join(args.output_dir, '{}_frames'.format(split))
         if not os.path.exists(output_dir_split):
             os.mkdir(output_dir_split)
         else:

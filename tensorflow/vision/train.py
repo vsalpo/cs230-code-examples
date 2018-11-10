@@ -18,7 +18,7 @@ from model.training import train_and_evaluate
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_dir', default='experiments/test',
                     help="Experiment directory containing params.json")
-parser.add_argument('--data_dir', default='data/64x64_SIGNS',
+parser.add_argument('--data_dir', default='data/64x64_DENSE',
                     help="Directory containing the dataset")
 parser.add_argument('--restore_from', default=None,
                     help="Optional, directory or file containing weights to reload before training")
@@ -46,14 +46,14 @@ if __name__ == '__main__':
     # Create the input data pipeline
     logging.info("Creating the datasets...")
     data_dir = args.data_dir
-    train_data_dir = os.path.join(data_dir, "train_signs")
-    dev_data_dir = os.path.join(data_dir, "dev_signs")
+    train_data_dir = os.path.join(data_dir, "train_frames")
+    dev_data_dir = os.path.join(data_dir, "dev_frames")
 
     # Get the filenames from the train and dev sets
     train_filenames = [os.path.join(train_data_dir, f) for f in os.listdir(train_data_dir)
-                       if f.endswith('.jpg')]
+                       if f.endswith('.png')]
     eval_filenames = [os.path.join(dev_data_dir, f) for f in os.listdir(dev_data_dir)
-                      if f.endswith('.jpg')]
+                      if f.endswith('.png')]
 
     # Labels will be between 0 and 5 included (6 classes in total)
     train_labels = [int(f.split('/')[-1][0]) for f in train_filenames]
