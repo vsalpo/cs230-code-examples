@@ -28,8 +28,8 @@ from tqdm import tqdm
 SIZE = 64
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--data_dir', default='data/SIGNS', help="Directory with the SIGNS dataset")
-parser.add_argument('--output_dir', default='data/64x64_SIGNS', help="Where to write the new data")
+parser.add_argument('--data_dir', default='data/DENSE', help="Directory with the DENSEPOSE dataset")
+parser.add_argument('--output_dir', default='data/64x64_DENSE', help="Where to write the new data")
 
 
 def resize_and_save(filename, output_dir, size=SIZE):
@@ -51,10 +51,10 @@ if __name__ == '__main__':
 
     # Get the filenames in each directory (train and test)
     filenames = os.listdir(train_data_dir)
-    filenames = [os.path.join(train_data_dir, f) for f in filenames if f.endswith('.jpg')]
+    filenames = [os.path.join(train_data_dir, f) for f in filenames if f.endswith('.png')]
 
     test_filenames = os.listdir(test_data_dir)
-    test_filenames = [os.path.join(test_data_dir, f) for f in test_filenames if f.endswith('.jpg')]
+    test_filenames = [os.path.join(test_data_dir, f) for f in test_filenames if f.endswith('.png')]
 
     # Split the images in 'train_signs' into 80% train and 20% dev
     # Make sure to always shuffle with a fixed seed so that the split is reproducible
